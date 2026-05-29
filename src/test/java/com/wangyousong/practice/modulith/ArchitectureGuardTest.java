@@ -2,6 +2,7 @@ package com.wangyousong.practice.modulith;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
+import org.springframework.modulith.docs.Documenter;
 
 /**
  * 架构守护测试 —— 确保模块边界和依赖关系符合 Spring Modulith 规范。
@@ -29,5 +30,11 @@ class ArchitectureGuardTest {
     @Test
     void printModuleOverview() {
         modules.forEach(System.out::println);
+    }
+
+    @Test
+    void writeDocumentation() {
+        // 2. 自动生成文档：在 target/modulith-docs 目录下自动生成 C4 架构图和模块依赖文档
+        new Documenter(modules).writeModulesAsPlantUml();
     }
 }
